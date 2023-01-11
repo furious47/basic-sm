@@ -13,7 +13,7 @@ const createpost = async (req, res) => {
   // const {company,status,position} = req.body;
   req.body.createdBy = req.user.userId;
 
-  const jobs = await post.create(req.body);
+  const posts = await post.create(req.body);
   res.status(200).json({ posts });
 };
 
