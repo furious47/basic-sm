@@ -4,7 +4,7 @@ const { badReq, noAuth } = require("../error");
 const register = async (req, res) => {
   const users = await user.create({ ...req.body });
   const token = users.tokenCreate();
-  res.status(200).json({ users, token });
+  res.status(200).json({ user: { name: users.name }, token });
 };
 
 const login = async (req, res) => {
