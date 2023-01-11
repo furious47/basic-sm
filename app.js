@@ -36,8 +36,8 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/posts", authMiddleware, jobsRouter);
 
-// app.use(errorHandler);
-// app.use(notfound);
+app.use(errorHandler);
+app.use(notfound);
 
 const port = process.env.PORT || 5000;
 

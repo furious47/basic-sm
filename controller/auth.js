@@ -2,6 +2,7 @@ const user = require("../models/auth");
 const { badReq, noAuth } = require("../error");
 
 const register = async (req, res) => {
+  console.log(req.body);
   const users = await user.create({ ...req.body });
   const token = users.tokenCreate();
   res.status(200).json({ users, token });
