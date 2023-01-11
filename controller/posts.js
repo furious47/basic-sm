@@ -60,7 +60,7 @@ const deletepost = async (req, res) => {
   } = req;
   console.log(id);
   const posts = await post.findByIdAndRemove({ _id: id, createdBy: userId });
-  if (!jobs) {
+  if (!posts) {
     throw new notFound(`there's no job with id ${id}`);
   }
   res.status(200).send();
