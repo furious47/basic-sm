@@ -26,7 +26,7 @@ const getonepost = async (req, res) => {
   //     throw new badReq('provide user and jobsId')
   // }
   const posts = await post.findOne({ _id: id, createdBy: userId });
-  if (!jobs) {
+  if (!posts) {
     throw new notFound(`no jobs in this id ${id}`);
   }
   res.status(200).json({ posts });
@@ -46,7 +46,7 @@ const updatepost = async (req, res) => {
     req.body,
     { new: true, validators: true }
   );
-  if (!jobs) {
+  if (!posts) {
     throw new notFound(`there's no job with id ${id}`);
   }
   res.status(200).json({ posts });

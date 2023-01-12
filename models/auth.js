@@ -13,6 +13,7 @@ const schema = new mongoose.Schema({
     type: String,
     required: [true, "pls provide email"],
     trim: true,
+    unique: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "pls provide email",

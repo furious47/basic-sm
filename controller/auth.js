@@ -15,7 +15,7 @@ const login = async (req, res) => {
   const users = await user.findOne({ email });
 
   if (!users) {
-    throw new noAuth("invalid credentials");
+    throw new noAuth("Invalid credentials");
   }
 
   const ispassword = await users.checkPass(password);
