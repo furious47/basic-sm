@@ -22,32 +22,31 @@ const getonepost = async (req, res) => {
     user: { userId },
     params: { id },
   } = req;
-  // if(!userId || !jobsId){
-  //     throw new badReq('provide user and jobsId')
-  // }
+
   const posts = await post.findOne({ _id: id, createdBy: userId });
   if (!posts) {
-    throw new notFound(`no jobs in this id ${id}`);
+    throw new notFound(`no posts in this id ${id}`);
   }
   res.status(200).json({ posts });
 };
 
 const updatepost = async (req, res) => {
   const {
-    body: { post },
+    body: { post: pos },
     params: { id },
     user: { userId },
   } = req;
-  if (posts === "") {
-    throw new badReq("company and poition fields shouldn't be empty");
+
+  if (pos === "") {
+    throw new badReq("posts fields shouldn't be empty");
   }
   const posts = await post.findByIdAndUpdate(
     { _id: id, createdBy: userId },
     req.body,
-    { new: true, validators: true }
+    { new: true, runValidators: true }
   );
   if (!posts) {
-    throw new notFound(`there's no job with id ${id}`);
+    throw new notFound(`there's no post with id ${id}`);
   }
   res.status(200).json({ posts });
 };
